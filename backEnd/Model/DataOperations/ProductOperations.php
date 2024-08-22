@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Product {
+class ProductOperations {
 
     private string $id_client;
     private string $image;

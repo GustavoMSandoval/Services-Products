@@ -1,4 +1,4 @@
-CREATE table Clients (
+CREATE table ClientsInfo (
     client_id varchar(36) NOT NULL DEFAULT(UUID()),
     client_image varchar(255) not null,
     client_name varchar(255) not null,
