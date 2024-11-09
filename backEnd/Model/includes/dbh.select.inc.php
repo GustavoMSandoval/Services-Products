@@ -2,19 +2,33 @@
 
 declare(strict_types=1);
 
+require_once('dbh.conn.inc.php');
+
 class SelectDb {
 
     function selectClient(string $email, string $password) {
 
         try {
             
-        require_once('../includes/DbHandlers/dbh.conn.inc.php');
+        $con = new ConnectionDb();
+        $con;
 
-        $query = "SELECT * FROM clientsinfo WHERE email = $email AND pwd = $password";
+        $query = "SELECT * FROM clientsinfo WHERE client_email = :email AND client_password = :pwd";
 
-        } catch(SQLite3Exception $e) {
+        $stmt =  PDO_NEW -> prepare($query);
 
-            echo 'Error with select client '.$e;
+        $stmt -> bindParam(":email", $email);
+        $stmt -> bindParam(":pwd", $password);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+
+        } catch(Error $e) {
+
+            echo 'Error with select client '.$e->getMessage();
 
         }       
 

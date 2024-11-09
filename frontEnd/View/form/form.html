@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="main-left">
+           <img src="../../images/Catalogue-bro.png" alt="">
+        </div>
+        <div class="main-right">
+            <form enctype="multipart/form-data" action="../../../backEnd/Controller/client.controller.signup.php" method="post" >
+                <label for="">Image</label>
+                <input type="file" name="image" id="image">
+                <input type="submit" value="submit">
+                <label for="">Name</label>
+                <input type="text" name="name" id="name">
+                <label for="">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="">Password</label>
+                <input type="password" name="password" id="password">
+                <label for="">PhoneNumber</label>
+                <input type="tel" name="phoneNumber" id="phoneNumber">
+                
+                <button><a href="../login/login.html">Login with your account</a></button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

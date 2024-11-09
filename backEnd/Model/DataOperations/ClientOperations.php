@@ -1,8 +1,4 @@
 <?php
-declare (strict_types = 1);
-
-
-
 
 class ClientOperations {
     
@@ -11,15 +7,26 @@ class ClientOperations {
     private string $email = '';
     private string $password = '';
     private string $phoneNumber = '';
+    
+    
 
 
     function clientRegister (string $image,string $name,string $email,string $password,string $phoneNumber) {
         
-       
+        require_once __DIR__ .'/../includes/dbh.select.inc.php';
         require_once  __DIR__ . '/../includes/dbh.insert.inc.php';
+
+        $verificationClient = new SelectDb();
         $insertClient = new InsertDb();
         
-        $insertClient -> insertClient($image ,$name, $email, $password, $phoneNumber);
+
+        if($verificationClient -> selectClient($email, $password) != true) {
+            $insertClient -> insertClientDB($image ,$name, $email, $password, $phoneNumber);
+            header("Location: ../../frontEnd/View/dashboard/dashboard.php?email={$email}" );
+        } else {
+            header("Location: ../../frontEnd/View/form/form.html");
+        }
+        
 
     }
 
@@ -28,8 +35,10 @@ class ClientOperations {
 
         $selectClient = new SelectDb();
 
-        if($selectClient -> selectClient($email, $password)) {
-            header("Location: ../../frontEnd/View/dashboard.php");
+        if($selectClient -> selectClient($email, $password) == true) {
+            header("Location: ../../frontEnd/View/dashboard/dashboard.php?email={$email}" );
+        } else {
+            header("Location: ../../frontEnd/View/form/form.html");
         }
 
     }

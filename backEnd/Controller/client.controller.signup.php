@@ -1,12 +1,16 @@
-<?php 
+<?php session_start()?>
 
-declare(strict_types=1);
+<?php 
 
 require_once ('../../backEnd/Model/DataOperations/ClientOperations.php');
 
+$formPath = "Location: ../../frontEnd/View/form/form.html";
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if($_POST['name'] !== "") {
+    $_SESSION['email'] = $_POST['email'] ;
+
+    if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
     try {
     $clientCreation = new ClientOperations();
 
@@ -17,22 +21,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clientCreation -> setPhoneNumber($_POST['phoneNumber']);
 
 
+    $image_folder = $_FILES['image'];
+
+    move_uploaded_file($image_folder['tmp_name'], '../uploads/'.$image_folder['name']);
+    
+
     $clientCreation -> clientRegister($clientCreation->getImage(),$clientCreation->getName(),$clientCreation->getEmail(),$clientCreation->getPassword(),$clientCreation->getPhoneNumber());
 
-    header("Location: ../../frontEnd/View/dashboard.php");
+    header("Location: ../../frontEnd/View/dashboard/dashboard.php?email='{$_GET['email']}'");
 
 
    } catch(PDOException) {
-    header("Location: ../../frontEnd/View/form.html");
+    header($formPath);
     die();
    } 
    } else {
-    header("Location: ../../frontEnd/View/form.html");
+    header($formPath);
     die();
    }
 
 } else {
-    header("Location: ../../frontEnd/View/form.html");
+    header($formPath);
     die();
 }
 

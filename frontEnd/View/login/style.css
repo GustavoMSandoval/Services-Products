@@ -1,0 +1,32 @@
+main {
+    width: 500px;
+    margin: auto;
+    height: 90vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    height: 40px;
+    width: 400px;
+    margin: 10px 0px;
+}
+
+input [type="file"] {
+    text-decoration: none;
+}

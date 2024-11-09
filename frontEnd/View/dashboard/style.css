@@ -1,0 +1,42 @@
+:root {
+    --azul: #55C1FF;
+    --laranja: #F6AE2D;
+    --preto-dash: #212529;
+}
+
+main {
+
+    margin: auto;
+    min-height: 100vh;
+    display: grid;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+
+    grid-template-areas: 
+    'main-left main-right main-right';
+    grid-template-columns: 0.3fr 2fr;
+}
+
+.main-left {
+    height: 100%;
+    grid-area: main-left;
+    background-color: var(--preto-dash);
+    color: #ffff;
+    text-align: center;
+    
+}
+
+.main-left a {
+    text-decoration: none;
+    color: #ffff;
+    margin-top: 20px;
+}
+
+.main-right {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    gap: 20px;
+    grid-area: main-right;
+}

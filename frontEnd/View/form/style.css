@@ -1,0 +1,70 @@
+:root {
+    --azul: #55C1FF;
+    --laranja: #F6AE2D;
+    --laranja-claro: #fce7c0;
+}
+
+body {
+    background-color: var(--laranja-claro);
+}
+
+main {
+    height: 100vh;
+    margin: auto;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main-left {
+    width: 50%;
+}
+
+.main-left img {
+    width: 100%;
+}
+
+.main-right {
+    width: 50%;
+}
+
+.main-right label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.main-right button {
+    border: none;
+    background-color: var(--laranja);
+    padding: 10px;
+    border-radius: 10px;
+}
+ 
+.main-right a {
+    text-decoration: none;
+   
+    color: var(--laranja-claro);
+    
+}
+ 
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    
+}
+
+input {
+    height: 20px;
+    width: 400px;
+    height: 30px;
+    margin: 10px 0px;
+}
+
+input [type="file"] {
+    text-decoration: none;
+}
+
